@@ -1,0 +1,27 @@
+server:
+    port: 8081
+
+spring:
+    application:
+        name: GestionExamensBackend
+    datasource:
+        url: jdbc:sqlserver://localhost:1433;databaseName=gestion_examens;useUnicode=true;useLegacyDatetimeCode=false;serverTimezone=UTC;createDatabaseIfNotExist=true;encrypt=false;trustServerCertificate=true
+        username: geb_spring_app
+        password: 340$Uuxwp7Mcxo7Khy
+    jpa:
+        hibernate:
+            ddl-auto: create
+        show-sql: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.SQLServerDialect
+    security:
+        user:
+            name: user
+            password: 1234
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,info,beans,conditions
