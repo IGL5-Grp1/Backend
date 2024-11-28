@@ -1,4 +1,4 @@
-package com.project.gestion_examens.services;
+package com.project.gestion_examens.services.impl;
 
 import com.project.gestion_examens.dto.MatiereDTO;
 import com.project.gestion_examens.entities.Matiere;

@@ -1,7 +1,7 @@
 package com.project.gestion_examens.controllers;
 
-import com.project.gestion_examens.dto.UniversiteDto;
-import com.project.gestion_examens.services.UniversiteService;
+import com.project.gestion_examens.dto.UniversiteDTO;
+import com.project.gestion_examens.services.impl.UniversiteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,29 +19,29 @@ public class UniversiteController {
 
     // Create Universite
     @PostMapping
-    public ResponseEntity<UniversiteDto> createUniversite(@RequestBody UniversiteDto universiteDto) {
-        UniversiteDto createdUniversite = universiteService.createUniversite(universiteDto);
+    public ResponseEntity<UniversiteDTO> createUniversite(@RequestBody UniversiteDTO universiteDto) {
+        UniversiteDTO createdUniversite = universiteService.createUniversite(universiteDto);
         return new ResponseEntity<>(createdUniversite, HttpStatus.CREATED);
     }
 
     // Get Universite by ID
     @GetMapping("/{id}")
-    public ResponseEntity<UniversiteDto> getUniversiteById(@PathVariable Long id) {
-        UniversiteDto universiteDto = universiteService.getUniversiteById(id);
+    public ResponseEntity<UniversiteDTO> getUniversiteById(@PathVariable Long id) {
+        UniversiteDTO universiteDto = universiteService.getUniversiteById(id);
         return new ResponseEntity<>(universiteDto, HttpStatus.OK);
     }
 
     // Get All Universites
     @GetMapping
-    public ResponseEntity<List<UniversiteDto>> getAllUniversites() {
-        List<UniversiteDto> universites = universiteService.getAllUniversites();
+    public ResponseEntity<List<UniversiteDTO>> getAllUniversites() {
+        List<UniversiteDTO> universites = universiteService.getAllUniversites();
         return new ResponseEntity<>(universites, HttpStatus.OK);
     }
 
     // Update Universite
     @PutMapping("/{id}")
-    public ResponseEntity<UniversiteDto> updateUniversite(@PathVariable Long id, @RequestBody UniversiteDto universiteDto) {
-        UniversiteDto updatedUniversite = universiteService.updateUniversite(id, universiteDto);
+    public ResponseEntity<UniversiteDTO> updateUniversite(@PathVariable Long id, @RequestBody UniversiteDTO universiteDto) {
+        UniversiteDTO updatedUniversite = universiteService.updateUniversite(id, universiteDto);
         return new ResponseEntity<>(updatedUniversite, HttpStatus.OK);
     }
 
