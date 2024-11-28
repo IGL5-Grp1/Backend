@@ -26,6 +26,6 @@ public class SectionMatiere {
 
     // Vous pouvez ajouter des attributs supplémentaires si nécessaire
     // Par exemple, un attribut pour la date d'association
-    // @Column(name = "date_association")
+    // @Column(name = "dateassociation")
     // private LocalDate dateAssociation;
 }

@@ -10,13 +10,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Section {
+    //IGL5/IGL4
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
-    // Autres attributs
     @Column(name = "nom", nullable = false)
     private String nom;
 
