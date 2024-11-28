@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: exammanagement
+  datasource:
+    url: jdbc:mysql://localhost:3306/exam-management-db
+    username: root
+    password: mimi019mimi
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        # enable_lazy_load_no_trans: true # This is used when we don’t have repositories
+
+server:
+  port: 8082
