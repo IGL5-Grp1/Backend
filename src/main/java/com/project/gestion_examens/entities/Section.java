@@ -1,5 +1,6 @@
 package com.project.gestion_examens.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import jakarta.persistence.*;
 import java.util.List;
@@ -15,24 +16,20 @@ public class Section {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Relation avec Filiere
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_filiere")
-    private Filiere filiere;
-
-    // Relation avec Niveau
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_niveau")
-    private Niveau niveau;
-
-    // Autres attributs si nécessaire
+    // Other attributes
     @Column(name = "nom", nullable = false)
     private String nom;
 
-    // Relation avec Matiere
+    @Column(name = "niveau", nullable = false)
+    private Integer niveau;
+
+    // Renamed the column to avoid SQL reserved keyword conflict
+    @Column(name = "group_number", nullable = true)
+    private Integer groupNumber;
+
     @OneToMany(mappedBy = "section", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<Matiere> matieres;
+    private List<SectionMatiere> sectionMatieres;
 }
-

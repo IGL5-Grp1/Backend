@@ -1,7 +1,9 @@
 package com.project.gestion_examens.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "matiere")
@@ -14,16 +16,16 @@ public class Matiere {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @Column(name = "coeff")
     private float coeff;
 
-    // Relation avec Section
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_section")
-    private Section section;
-
-    // Autres relations ou attributs si nécessaire
+    // Relation avec SectionMatiere
+    @OneToMany(mappedBy = "matiere", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<SectionMatiere> sectionMatieres;
 }
