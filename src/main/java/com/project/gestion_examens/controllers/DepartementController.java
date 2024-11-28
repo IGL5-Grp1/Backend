@@ -1,7 +1,7 @@
 package com.project.gestion_examens.controllers;
 
-import com.project.gestion_examens.dto.DepartementDto;
-import com.project.gestion_examens.services.DepartementService;
+import com.project.gestion_examens.dto.DepartementDTO;
+import com.project.gestion_examens.services.impl.DepartementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,29 +18,29 @@ public class DepartementController {
 
     // Create Departement
     @PostMapping
-    public ResponseEntity<DepartementDto> createDepartement(@RequestBody DepartementDto departementDto) {
-        DepartementDto createdDepartement = departementService.createDepartement(departementDto);
+    public ResponseEntity<DepartementDTO> createDepartement(@RequestBody DepartementDTO departementDto) {
+        DepartementDTO createdDepartement = departementService.createDepartement(departementDto);
         return new ResponseEntity<>(createdDepartement, HttpStatus.CREATED);
     }
 
     // Get Departement by ID
     @GetMapping("/{id}")
-    public ResponseEntity<DepartementDto> getDepartementById(@PathVariable Long id) {
-        DepartementDto departementDto = departementService.getDepartementById(id);
+    public ResponseEntity<DepartementDTO> getDepartementById(@PathVariable Long id) {
+        DepartementDTO departementDto = departementService.getDepartementById(id);
         return new ResponseEntity<>(departementDto, HttpStatus.OK);
     }
 
     // Get All Departements
     @GetMapping
-    public ResponseEntity<List<DepartementDto>> getAllDepartements() {
-        List<DepartementDto> departements = departementService.getAllDepartements();
+    public ResponseEntity<List<DepartementDTO>> getAllDepartements() {
+        List<DepartementDTO> departements = departementService.getAllDepartements();
         return new ResponseEntity<>(departements, HttpStatus.OK);
     }
 
     // Update Departement
     @PutMapping("/{id}")
-    public ResponseEntity<DepartementDto> updateDepartement(@PathVariable Long id, @RequestBody DepartementDto departementDto) {
-        DepartementDto updatedDepartement = departementService.updateDepartement(id, departementDto);
+    public ResponseEntity<DepartementDTO> updateDepartement(@PathVariable Long id, @RequestBody DepartementDTO departementDto) {
+        DepartementDTO updatedDepartement = departementService.updateDepartement(id, departementDto);
         return new ResponseEntity<>(updatedDepartement, HttpStatus.OK);
     }
 

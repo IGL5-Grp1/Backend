@@ -1,6 +1,6 @@
-package com.project.gestion_examens.services;
+package com.project.gestion_examens.services.impl;
 
-import com.project.gestion_examens.dto.DepartementDto;
+import com.project.gestion_examens.dto.DepartementDTO;
 import com.project.gestion_examens.entities.Departement;
 import com.project.gestion_examens.entities.Faculte;
 import com.project.gestion_examens.repositories.DepartementRepository;
@@ -20,7 +20,7 @@ public class DepartementService {
     private final FaculteRepository faculteRepository;
 
     // Create Departement
-    public DepartementDto createDepartement(DepartementDto departementDto) {
+    public DepartementDTO createDepartement(DepartementDTO departementDto) {
         Faculte faculte = faculteRepository.findById(departementDto.getFaculteId())
                 .orElseThrow(() -> new EntityNotFoundException("Faculte not found with id: " + departementDto.getFaculteId()));
 
@@ -33,21 +33,21 @@ public class DepartementService {
     }
 
     // Get Departement by ID
-    public DepartementDto getDepartementById(Long id) {
+    public DepartementDTO getDepartementById(Long id) {
         Departement departement = departementRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Departement not found with id: " + id));
         return mapToDto(departement);
     }
 
     // Get All Departements
-    public List<DepartementDto> getAllDepartements() {
+    public List<DepartementDTO> getAllDepartements() {
         return departementRepository.findAll().stream()
                 .map(this::mapToDto)
                 .collect(Collectors.toList());
     }
 
     // Update Departement
-    public DepartementDto updateDepartement(Long id, DepartementDto departementDto) {
+    public DepartementDTO updateDepartement(Long id, DepartementDTO departementDto) {
         Departement departement = departementRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Departement not found with id: " + id));
 
@@ -69,8 +69,8 @@ public class DepartementService {
     }
 
     // Helper method to map Departement to DepartementDto
-    private DepartementDto mapToDto(Departement departement) {
-        return new DepartementDto(
+    private DepartementDTO mapToDto(Departement departement) {
+        return new DepartementDTO(
                 departement.getId(),
                 departement.getNomDept(),
                 departement.getFaculte() != null ? departement.getFaculte().getId() : null

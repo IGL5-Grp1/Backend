@@ -1,6 +1,6 @@
-package com.project.gestion_examens.services;
+package com.project.gestion_examens.services.impl;
 
-import com.project.gestion_examens.dto.FaculteDto;
+import com.project.gestion_examens.dto.FaculteDTO;
 import com.project.gestion_examens.entities.Faculte;
 import com.project.gestion_examens.entities.Universite;
 import com.project.gestion_examens.repositories.FaculteRepository;
@@ -20,7 +20,7 @@ public class FaculteService {
     private final UniversiteRepository universiteRepository;
 
     // Create Faculte
-    public FaculteDto createFaculte(FaculteDto faculteDto) {
+    public FaculteDTO createFaculte(FaculteDTO faculteDto) {
         Universite universite = universiteRepository.findById(faculteDto.getUniversiteId())
                 .orElseThrow(() -> new EntityNotFoundException("Universite not found with id: " + faculteDto.getUniversiteId()));
 
@@ -33,21 +33,21 @@ public class FaculteService {
     }
 
     // Get Faculte by ID
-    public FaculteDto getFaculteById(Long id) {
+    public FaculteDTO getFaculteById(Long id) {
         Faculte faculte = faculteRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Faculte not found with id: " + id));
         return mapToDto(faculte);
     }
 
     // Get All Facultes
-    public List<FaculteDto> getAllFacultes() {
+    public List<FaculteDTO> getAllFacultes() {
         return faculteRepository.findAll().stream()
                 .map(this::mapToDto)
                 .collect(Collectors.toList());
     }
 
     // Update Faculte
-    public FaculteDto updateFaculte(Long id, FaculteDto faculteDto) {
+    public FaculteDTO updateFaculte(Long id, FaculteDTO faculteDto) {
         Faculte faculte = faculteRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Faculte not found with id: " + id));
 
@@ -69,8 +69,8 @@ public class FaculteService {
     }
 
     // Helper method to map Faculte to FaculteDto
-    private FaculteDto mapToDto(Faculte faculte) {
-        return new FaculteDto(
+    private FaculteDTO mapToDto(Faculte faculte) {
+        return new FaculteDTO(
                 faculte.getId(),
                 faculte.getNomFaculte(),
                 faculte.getUniversite() != null ? faculte.getUniversite().getId() : null

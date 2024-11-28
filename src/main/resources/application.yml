@@ -1,0 +1,24 @@
+server:
+    port: 8081
+    servlet.context-path: /api/v1/gestion-examens
+
+spring:
+    application:
+        name: GestionExamensBackend
+    datasource:
+        url: jdbc:postgresql://localhost:5432/gestion_examens
+        username: geb_spring_app
+        password: 340$Uuxwp7Mcxo7Khy
+    jpa:
+        hibernate:
+            ddl-auto: create
+        show-sql: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,info,beans,conditions

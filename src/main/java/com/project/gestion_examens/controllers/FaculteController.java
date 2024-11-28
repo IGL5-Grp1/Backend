@@ -1,7 +1,7 @@
 package com.project.gestion_examens.controllers;
 
-import com.project.gestion_examens.dto.FaculteDto;
-import com.project.gestion_examens.services.FaculteService;
+import com.project.gestion_examens.dto.FaculteDTO;
+import com.project.gestion_examens.services.impl.FaculteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,29 +18,29 @@ public class FaculteController {
 
     // Create Faculte
     @PostMapping
-    public ResponseEntity<FaculteDto> createFaculte(@RequestBody FaculteDto faculteDto) {
-        FaculteDto createdFaculte = faculteService.createFaculte(faculteDto);
+    public ResponseEntity<FaculteDTO> createFaculte(@RequestBody FaculteDTO faculteDto) {
+        FaculteDTO createdFaculte = faculteService.createFaculte(faculteDto);
         return new ResponseEntity<>(createdFaculte, HttpStatus.CREATED);
     }
 
     // Get Faculte by ID
     @GetMapping("/{id}")
-    public ResponseEntity<FaculteDto> getFaculteById(@PathVariable Long id) {
-        FaculteDto faculteDto = faculteService.getFaculteById(id);
+    public ResponseEntity<FaculteDTO> getFaculteById(@PathVariable Long id) {
+        FaculteDTO faculteDto = faculteService.getFaculteById(id);
         return new ResponseEntity<>(faculteDto, HttpStatus.OK);
     }
 
     // Get All Facultes
     @GetMapping
-    public ResponseEntity<List<FaculteDto>> getAllFacultes() {
-        List<FaculteDto> facultes = faculteService.getAllFacultes();
+    public ResponseEntity<List<FaculteDTO>> getAllFacultes() {
+        List<FaculteDTO> facultes = faculteService.getAllFacultes();
         return new ResponseEntity<>(facultes, HttpStatus.OK);
     }
 
     // Update Faculte
     @PutMapping("/{id}")
-    public ResponseEntity<FaculteDto> updateFaculte(@PathVariable Long id, @RequestBody FaculteDto faculteDto) {
-        FaculteDto updatedFaculte = faculteService.updateFaculte(id, faculteDto);
+    public ResponseEntity<FaculteDTO> updateFaculte(@PathVariable Long id, @RequestBody FaculteDTO faculteDto) {
+        FaculteDTO updatedFaculte = faculteService.updateFaculte(id, faculteDto);
         return new ResponseEntity<>(updatedFaculte, HttpStatus.OK);
     }
 
