@@ -15,19 +15,13 @@ public class Section {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Relation avec Filiere
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_filiere")
-    private Filiere filiere;
-
-    // Relation avec Niveau
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_niveau")
-    private Niveau niveau;
 
     // Autres attributs
     @Column(name = "nom", nullable = false)
     private String nom;
+
+    @Column(name = "niveau", nullable = false)
+    private String niveau;
 
     // Relation avec SectionMatiere
     @OneToMany(mappedBy = "section", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
