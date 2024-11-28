@@ -5,8 +5,8 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UniversiteDto {
+public class FaculteDTO {
     private Long id;
-    private String nomUniversite;
-    private String region;
+    private String nomFaculte;
+    private Long universiteId; // Reference to Universite
 }

@@ -6,9 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -17,8 +14,6 @@ import java.util.Set;
 @Table(name = "users")
 
 public class User {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
@@ -47,10 +42,4 @@ public class User {
             this.role = null;
         }
     }
-
-    public User(String password, String email) {
-        this.password = password;
-        this.email = email;
-    }
-
 }

@@ -1,6 +1,6 @@
-package com.project.gestion_examens.services;
+package com.project.gestion_examens.services.impl;
 
-import com.project.gestion_examens.dto.SalleDto;
+import com.project.gestion_examens.dto.SalleDTO;
 import com.project.gestion_examens.entities.Departement;
 import com.project.gestion_examens.entities.Salle;
 import com.project.gestion_examens.repositories.DepartementRepository;
@@ -20,7 +20,7 @@ public class SalleService {
     private final DepartementRepository departementRepository;
 
     // Create Salle
-    public SalleDto createSalle(SalleDto salleDto) {
+    public SalleDTO createSalle(SalleDTO salleDto) {
         Departement departement = departementRepository.findById(salleDto.getDepartementId())
                 .orElseThrow(() -> new EntityNotFoundException("Departement not found with id: " + salleDto.getDepartementId()));
 
@@ -34,21 +34,21 @@ public class SalleService {
     }
 
     // Get Salle by ID
-    public SalleDto getSalleById(Long id) {
+    public SalleDTO getSalleById(Long id) {
         Salle salle = salleRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Salle not found with id: " + id));
         return mapToDto(salle);
     }
 
     // Get All Salles
-    public List<SalleDto> getAllSalles() {
+    public List<SalleDTO> getAllSalles() {
         return salleRepository.findAll().stream()
                 .map(this::mapToDto)
                 .collect(Collectors.toList());
     }
 
     // Update Salle
-    public SalleDto updateSalle(Long id, SalleDto salleDto) {
+    public SalleDTO updateSalle(Long id, SalleDTO salleDto) {
         Salle salle = salleRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Salle not found with id: " + id));
 
@@ -71,8 +71,8 @@ public class SalleService {
     }
 
     // Helper method to map Salle to SalleDto
-    private SalleDto mapToDto(Salle salle) {
-        return new SalleDto(
+    private SalleDTO mapToDto(Salle salle) {
+        return new SalleDTO(
                 salle.getId(),
                 salle.getNoSalle(),
                 salle.getCapacite(),

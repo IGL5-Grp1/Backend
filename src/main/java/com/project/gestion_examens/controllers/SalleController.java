@@ -1,7 +1,7 @@
 package com.project.gestion_examens.controllers;
 
-import com.project.gestion_examens.dto.SalleDto;
-import com.project.gestion_examens.services.SalleService;
+import com.project.gestion_examens.dto.SalleDTO;
+import com.project.gestion_examens.services.impl.SalleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,29 +18,29 @@ public class SalleController {
 
     // Create Salle
     @PostMapping
-    public ResponseEntity<SalleDto> createSalle(@RequestBody SalleDto salleDto) {
-        SalleDto createdSalle = salleService.createSalle(salleDto);
+    public ResponseEntity<SalleDTO> createSalle(@RequestBody SalleDTO salleDto) {
+        SalleDTO createdSalle = salleService.createSalle(salleDto);
         return new ResponseEntity<>(createdSalle, HttpStatus.CREATED);
     }
 
     // Get Salle by ID
     @GetMapping("/{id}")
-    public ResponseEntity<SalleDto> getSalleById(@PathVariable Long id) {
-        SalleDto salleDto = salleService.getSalleById(id);
+    public ResponseEntity<SalleDTO> getSalleById(@PathVariable Long id) {
+        SalleDTO salleDto = salleService.getSalleById(id);
         return new ResponseEntity<>(salleDto, HttpStatus.OK);
     }
 
     // Get All Salles
     @GetMapping
-    public ResponseEntity<List<SalleDto>> getAllSalles() {
-        List<SalleDto> salles = salleService.getAllSalles();
+    public ResponseEntity<List<SalleDTO>> getAllSalles() {
+        List<SalleDTO> salles = salleService.getAllSalles();
         return new ResponseEntity<>(salles, HttpStatus.OK);
     }
 
     // Update Salle
     @PutMapping("/{id}")
-    public ResponseEntity<SalleDto> updateSalle(@PathVariable Long id, @RequestBody SalleDto salleDto) {
-        SalleDto updatedSalle = salleService.updateSalle(id, salleDto);
+    public ResponseEntity<SalleDTO> updateSalle(@PathVariable Long id, @RequestBody SalleDTO salleDto) {
+        SalleDTO updatedSalle = salleService.updateSalle(id, salleDto);
         return new ResponseEntity<>(updatedSalle, HttpStatus.OK);
     }
 
