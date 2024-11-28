@@ -25,14 +25,13 @@ public class Section {
     @JoinColumn(name = "id_niveau")
     private Niveau niveau;
 
-    // Autres attributs si nécessaire
+    // Autres attributs
     @Column(name = "nom", nullable = false)
     private String nom;
 
-    // Relation avec Matiere
+    // Relation avec SectionMatiere
     @OneToMany(mappedBy = "section", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<Matiere> matieres;
+    private List<SectionMatiere> sectionMatieres;
 }
-

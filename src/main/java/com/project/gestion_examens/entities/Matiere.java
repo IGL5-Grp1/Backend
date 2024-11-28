@@ -2,6 +2,7 @@ package com.project.gestion_examens.entities;
 
 import lombok.*;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "matiere")
@@ -20,10 +21,9 @@ public class Matiere {
     @Column(name = "coeff")
     private float coeff;
 
-    // Relation avec Section
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_section")
-    private Section section;
-
-    // Autres relations ou attributs si nécessaire
+    // Relation avec SectionMatiere
+    @OneToMany(mappedBy = "matiere", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<SectionMatiere> sectionMatieres;
 }
