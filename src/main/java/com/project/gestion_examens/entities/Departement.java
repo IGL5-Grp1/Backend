@@ -27,4 +27,8 @@ public class Departement {
     @ToString.Exclude  // Évite les boucles infinies lors du toString()
     @EqualsAndHashCode.Exclude  // Évite les problèmes lors de l'utilisation dans des collections
     private List<HistorisationProf> historisationsProf;
+    @OneToMany(mappedBy = "departement", fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<Section> sections;
 }
