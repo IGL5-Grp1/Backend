@@ -9,7 +9,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Filiere {
+public class
+Filiere {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
