@@ -23,8 +23,12 @@ public class Section {
     @Column(name = "niveau", nullable = false)
     private Integer niveau;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id", nullable = false) // FK column name
+    private Departement departement;
+
     // Renamed the column to avoid SQL reserved keyword conflict
-    @Column(name = "group_number", nullable = true)
+    @Column(name = "group_number", nullable = false)
     private Integer groupNumber;
 
     @OneToMany(mappedBy = "section", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
