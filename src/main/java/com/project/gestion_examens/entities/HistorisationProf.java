@@ -16,8 +16,8 @@ public class HistorisationProf {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_professeur")
-    private Professeur professeur;
+    @JoinColumn(name = "id_enseignant")
+    private Enseignant enseignant;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_departement")
