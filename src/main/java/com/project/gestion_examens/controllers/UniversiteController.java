@@ -3,6 +3,7 @@ package com.project.gestion_examens.controllers;
 import com.project.gestion_examens.dto.UniversiteDTO;
 import com.project.gestion_examens.services.impl.UniversiteService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/universite")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('UniversityAdmin')")
+@RestController@RequestMapping("/universite")
 public class UniversiteController {
 
     private final UniversiteService universiteService;

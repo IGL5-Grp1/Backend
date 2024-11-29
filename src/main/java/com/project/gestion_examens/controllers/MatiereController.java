@@ -2,13 +2,16 @@ package com.project.gestion_examens.controllers;
 
 import com.project.gestion_examens.dto.MatiereDTO;
 import com.project.gestion_examens.services.MatiereService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/matieres")
+@RequiredArgsConstructor
+@PreAuthorize("hasRole('DepartmentAdmin')")
+@RestController@RequestMapping("/matieres")
 public class MatiereController {
 
     @Autowired

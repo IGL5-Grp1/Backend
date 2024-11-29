@@ -3,11 +3,15 @@ package com.project.gestion_examens.controllers;
 
 import com.project.gestion_examens.dto.SectionMatiereDTO;
 import com.project.gestion_examens.services.SectionMatiereService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
+@PreAuthorize("hasRole('DepartmentAdmin')")
 @RestController
 @RequestMapping("/section-matieres")
 public class SectionMatiereController {

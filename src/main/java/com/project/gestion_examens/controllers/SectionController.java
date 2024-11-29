@@ -2,14 +2,17 @@ package com.project.gestion_examens.controllers;
 
 import com.project.gestion_examens.entities.Section;
 import com.project.gestion_examens.services.ISectionService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("api/section")
+@RequiredArgsConstructor
+@PreAuthorize("hasRole('DepartmentAdmin')")
+@RestController@RequestMapping("/section")
 public class SectionController {
     ISectionService SectionService;
     @PostMapping("add")
