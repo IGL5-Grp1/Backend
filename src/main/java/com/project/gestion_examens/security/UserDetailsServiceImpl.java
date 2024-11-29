@@ -1,6 +1,5 @@
 package com.project.gestion_examens.security;
 
-import com.project.gestion_examens.entities.Role;
 import com.project.gestion_examens.entities.User;
 import com.project.gestion_examens.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -26,8 +26,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 "found " +
                 "with email: " + email));
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        Role role = user.getRole();
-        authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
+        List<String> permissions = user.getRole().getAllPermissions();
+        permissions.forEach(permission -> authorities.add(new SimpleGrantedAuthority("ROLE_"  + permission)));
         return new org.springframework.security.core.userdetails.User(email, user.getPassword(), authorities);
     }
 }

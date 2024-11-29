@@ -1,7 +1,8 @@
-package com.project.gestion_examens.services;
+package com.project.gestion_examens.services.impl;
 
 import com.project.gestion_examens.entities.Enseignant;
 import com.project.gestion_examens.repositories.EnseignantRepository;
+import com.project.gestion_examens.services.IEnseignantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
