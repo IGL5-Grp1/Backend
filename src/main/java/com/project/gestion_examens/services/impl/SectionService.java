@@ -1,8 +1,9 @@
-package com.project.gestion_examens.services;
+package com.project.gestion_examens.services.impl;
 
 import com.project.gestion_examens.entities.Departement;
 import com.project.gestion_examens.entities.Section;
 import com.project.gestion_examens.repositories.SectionRepository;
+import com.project.gestion_examens.services.ISectionService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

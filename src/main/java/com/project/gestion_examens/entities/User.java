@@ -1,10 +1,8 @@
 package com.project.gestion_examens.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
@@ -23,22 +21,24 @@ public class User {
     @Column(name = "email", nullable = false, length = 45, unique = true)
     private String email;
 
+    @ToString.Exclude
+    @JsonIgnore
     @Basic
     @Column(name = "password", nullable = false, length = 64)
     private String password;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "role_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
     public void assignRoleToUser(Role role) {
         this.role = role;
-        role.setUser(this);
+        role.getUsers().add(this);
     }
 
     public void removeRoleFromUser() {
         if (this.role != null) {
-            this.role.setUser(null);
+            getRole().getUsers().remove(this);
             this.role = null;
         }
     }

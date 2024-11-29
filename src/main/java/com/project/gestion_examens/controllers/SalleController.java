@@ -2,16 +2,20 @@ package com.project.gestion_examens.controllers;
 
 import com.project.gestion_examens.dto.SalleDTO;
 import com.project.gestion_examens.services.impl.SalleService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/salles")
+@SecurityRequirement(name = "Access Token Authorization")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole(T(com.project.gestion_examens.entities.Role$RoleName).DepartmentAdmin.name())")
+@RestController
+@RequestMapping("/salles")
 public class SalleController {
 
     private final SalleService salleService;
