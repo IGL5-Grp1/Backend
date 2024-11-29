@@ -31,7 +31,7 @@ public class Role {
     @Builder.Default
     @ToString.Exclude
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "role_hierarchy",
             joinColumns = @JoinColumn(name = "role_id"),
@@ -58,5 +58,12 @@ public class Role {
         }
 
         return permissions;
+    }
+
+    public enum RoleName {
+        SuperAdmin,
+        UniversityAdmin,
+        EstablishmentAdmin,
+        DepartmentAdmin,
     }
 }

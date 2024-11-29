@@ -32,16 +32,21 @@ public class Initializer implements ApplicationRunner {
 //                )
 //        );
 
-        Role superAdmin = roleRepository.save(Role.builder().name("SuperAdmin").build());
-        Role universityAdmin = roleRepository.save(Role.builder().name("UniversityAdmin").build());
+        for (Role.RoleName roleName : Role.RoleName.values()) {
+            roleRepository.save(Role.builder().name(roleName.name()).build());
+        }
+
+
+        Role superAdmin = roleRepository.findByName(Role.RoleName.SuperAdmin.name()).orElseThrow(() -> new RuntimeException("Role not found"));
+        Role universityAdmin = roleRepository.findByName(Role.RoleName.UniversityAdmin.name()).orElseThrow(() -> new RuntimeException("Role not found"));
         universityAdmin.addParentRole(superAdmin);
         roleRepository.save(universityAdmin);
 
-        Role establishmentAdmin = roleRepository.save(Role.builder().name("EstablishmentAdmin").build());
+        Role establishmentAdmin = roleRepository.findByName(Role.RoleName.EstablishmentAdmin.name()).orElseThrow(() -> new RuntimeException("Role not found"));
         establishmentAdmin.addParentRole(universityAdmin);
         roleRepository.save(establishmentAdmin);
 
-        Role departmentAdmin = roleRepository.save(Role.builder().name("DepartmentAdmin").build());
+        Role departmentAdmin = roleRepository.findByName(Role.RoleName.DepartmentAdmin.name()).orElseThrow(() -> new RuntimeException("Role not found"));
         departmentAdmin.addParentRole(establishmentAdmin);
         roleRepository.save(departmentAdmin);
 

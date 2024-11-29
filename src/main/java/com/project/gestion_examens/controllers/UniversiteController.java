@@ -2,6 +2,7 @@ package com.project.gestion_examens.controllers;
 
 import com.project.gestion_examens.dto.UniversiteDTO;
 import com.project.gestion_examens.services.impl.UniversiteService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import java.util.List;
 
+@SecurityRequirement(name = "Access Token Authorization")
 @RequiredArgsConstructor
-@PreAuthorize("hasRole('UniversityAdmin')")
+@PreAuthorize("hasRole(T(com.project.gestion_examens.entities.Role$RoleName).UniversityAdmin.name())")
 @RestController@RequestMapping("/universite")
 public class UniversiteController {
 
