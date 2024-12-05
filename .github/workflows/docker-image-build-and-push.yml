@@ -42,7 +42,7 @@ jobs:
                     done
 
             -   name: Clear SonarQube cache
-                run: rm -rf ~/.sonar/cache
+                run: rm -rf /home/runner/.sonar/cache
 
             -   name: Build and Test
                 run: mvn clean verify
