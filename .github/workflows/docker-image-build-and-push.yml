@@ -55,7 +55,7 @@ jobs:
                     -Dsonar.login=admin \
                     -Dsonar.password="Admin55307062." \
                     -Dsonar.scanner.forceUpload=true \
-                    -Dsonar.scanner.skipFileHash=true
+                    -Dsonar.scanner.skipHashValidation=true
 
             -   name: Upload build artifacts
                 uses: actions/upload-artifact@v3
