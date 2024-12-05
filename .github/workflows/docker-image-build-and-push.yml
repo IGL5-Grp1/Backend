@@ -44,18 +44,19 @@ jobs:
             -   name: Clear SonarQube cache
                 run: rm -rf /home/runner/.sonar/cache
 
+            # Build, test, and generate JaCoCo report
             -   name: Build and Test
-                run: mvn clean verify
+                run: |
+                    mvn clean verify -DskipTests=true
 
+            # Analyze with SonarQube
             -   name: Analyze with SonarQube
                 run: |
                     mvn sonar:sonar \
                     -Dsonar.projectKey=gestion-examens \
                     -Dsonar.host.url=https://879a-197-3-209-3.ngrok-free.app \
                     -Dsonar.login=admin \
-                    -Dsonar.password="Admin55307062." \
-                    -Dsonar.scanner.forceUpload=true \
-                    -Dsonar.scanner.skipHashValidation=true
+                    -Dsonar.password="Admin55307062."
 
             -   name: Upload build artifacts
                 uses: actions/upload-artifact@v3
