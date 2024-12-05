@@ -44,6 +44,11 @@ jobs:
                     sleep 5
                     done
 
+            # Clear SonarQube cache
+            -   name: Clear SonarQube cache
+                run: rm -rf ~/.sonar/cache
+
+
             # Build, test, and generate JaCoCo report
             -   name: Build and Test
                 run: |
