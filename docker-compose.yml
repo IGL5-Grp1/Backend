@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/gestion_examens
+      SPRING_DATASOURCE_USERNAME: geb_spring_app
+      SPRING_DATASOURCE_PASSWORD: 340$Uuxwp7Mcxo7Khy
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      SERVER_PORT: 8081
+      SERVER_SERVLET_CONTEXT_PATH: /api/v1/gestion-examens
+    depends_on:
+      - db
+    networks:
+      - gestion-examens-network
+
+  db:
+    image: postgres:15
+    container_name: gestion-examens-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: gestion_examens
+      POSTGRES_USER: geb_spring_app
+      POSTGRES_PASSWORD: 340$Uuxwp7Mcxo7Khy
+    volumes:
+      - gestion-examens-data:/var/lib/postgresql/data
+    networks:
+      - gestion-examens-network
+
+volumes:
+  gestion-examens-data:
+
+networks:
+  gestion-examens-network:
+    driver: bridge
