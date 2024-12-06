@@ -51,7 +51,7 @@ jobs:
                     mvn sonar:sonar \
                     -Dsonar.projectKey=gestion-examens \
                     -Dsonar.host.url=https://dce3-102-152-208-137.ngrok-free.app \
-                    -Dsonar.token=sqa_3d83f1f6a7c9add5aa9358884c8f6bccabd1b861
+                    -Dsonar.token=sqa_3d19570e2c2ffa735f47319dabcf0a5c91f5d84d
 
             -   name: Upload build artifacts
                 uses: actions/upload-artifact@v3
