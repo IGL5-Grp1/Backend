@@ -84,9 +84,16 @@ jobs:
                 run: |
                     jarFile=$(ls target/*.jar)
                     echo "Found JAR file: $jarFile"
-                    version=$(echo "$jarFile" | sed -n 's/.*-\(.*\)\.jar/\1/p')
+                    version=$(echo "$jarFile" | sed -n 's/.*-\([0-9]*\.[0-9]*\.[0-9]*.*\)\.jar/\1/p')
                     echo "Extracted version: $version"
                     echo "VERSION=$version" >> $GITHUB_ENV
+
+            -   name: Set up Dockerfile
+                run: |
+                    jarFile=$(ls target/*.jar)
+                    echo "Found JAR file: $jarFile"
+                    export APP_JAR=$jarFile
+                    envsubst < Dockerfiletemplate > Dockerfile
 
             -   name: Log in to Docker Hub
                 uses: docker/login-action@v2
