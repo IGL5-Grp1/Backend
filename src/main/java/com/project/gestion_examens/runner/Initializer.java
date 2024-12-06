@@ -24,14 +24,6 @@ public class Initializer implements ApplicationRunner {
     private final PasswordEncoder passwordEncoder;
 
     private void createRoles() {
-//        roleRepository.saveAll(Arrays.asList(
-//                Role.builder().name("SuperAdmin").build(),
-//                Role.builder().name("UniversityAdmin").build(),
-//                Role.builder().name("EstablishmentAdmin").build(),
-//                Role.builder().name("DepartmentAdmin").build()
-//                )
-//        );
-
         for (Role.RoleName roleName : Role.RoleName.values()) {
             roleRepository.save(Role.builder().name(roleName.name()).build());
         }
