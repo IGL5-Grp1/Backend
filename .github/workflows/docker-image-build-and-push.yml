@@ -7,6 +7,7 @@ on:
 
 jobs:
     build-test-analyze:
+        name: Build, Test, and Analyze
         runs-on: ubuntu-latest
 
         services:
@@ -48,7 +49,7 @@ jobs:
                 run: |
                     mvn sonar:sonar \
                     -Dsonar.projectKey=gestion-examens \
-                    -Dsonar.host.url=https://6de4-41-227-188-64.ngrok-free.app \
+                    -Dsonar.host.url=https://dce3-102-152-208-137.ngrok-free.app \
                     -Dsonar.token=sqa_3d83f1f6a7c9add5aa9358884c8f6bccabd1b861
 
             -   name: Upload build artifacts
