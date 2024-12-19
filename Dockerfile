@@ -1,11 +1,35 @@
-# Use OpenJDK 21 with Alpine for a lightweight base image
+# Use the official OpenJDK 17 image from Docker Hub
+FROM openjdk:21-jdk-slim AS builder
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the Maven or Gradle build files to the container
+# (This is for Maven; adjust accordingly if using Gradle)
+COPY pom.xml .
+
+RUN apt-get update && apt-get install -y maven
+
+# Download the project dependencies
+RUN mvn dependency:go-offline
+
+# Copy the source code to the container
+COPY src /app/src
+
+# Build the project and package it as a JAR file
+RUN mvn clean package -DskipTests
+
+# Use a smaller base image for running the app
 FROM openjdk:21-jdk-slim
 
-# Expose the application's default port
+# Set the working directory for the application
+WORKDIR /app
+
+# Copy the JAR file from the builder image into the container
+COPY --from=builder /app/target/*.jar /app/gestion-examen.jar
+
+# Expose the application port (adjust as per your app's port)
 EXPOSE 8081
 
-# Copy the built JAR file directly into the container
-ADD target/gestion-examens-0.0.1-SNAPSHOT.jar app.jar
-
-# Run the Spring Boot application
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Command to run the JAR file when the container starts
+ENTRYPOINT ["java", "-jar", "/app/gestion-examen.jar"]
