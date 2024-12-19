@@ -33,8 +33,4 @@ public class EnseignatMapper {
         }
         return enseignantResponseDTOS;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 04a9a2ff7180845565d5734b4e64bbd0e402c780
 }

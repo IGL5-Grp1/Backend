@@ -1,6 +1,4 @@
 package com.project.gestion_examens.services.impl;
-
-<<<<<<< HEAD
 import com.project.gestion_examens.dto.request.AddEnseignantDTO;
 import com.project.gestion_examens.dto.response.EnseignantResponseDTO;
 import com.project.gestion_examens.entities.Departement;
@@ -8,21 +6,16 @@ import com.project.gestion_examens.entities.Enseignant;
 import com.project.gestion_examens.entities.Grade;
 import com.project.gestion_examens.mappers.EnseignatMapper;
 import com.project.gestion_examens.repositories.DepartementRepository;
-=======
 import com.project.gestion_examens.dto.response.EnseignantResponseDTO;
 import com.project.gestion_examens.entities.Enseignant;
 import com.project.gestion_examens.mappers.EnseignatMapper;
->>>>>>> 04a9a2ff7180845565d5734b4e64bbd0e402c780
 import com.project.gestion_examens.repositories.EnseignantRepository;
 import com.project.gestion_examens.repositories.GradeRepository;
 import com.project.gestion_examens.services.IEnseignantService;
-<<<<<<< HEAD
 import com.sun.jdi.request.InvalidRequestStateException;
 import lombok.AllArgsConstructor;
-=======
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> 04a9a2ff7180845565d5734b4e64bbd0e402c780
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,16 +23,10 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class EnseignantService implements IEnseignantService {
-<<<<<<< HEAD
     private final DepartementRepository departementRepository;
     EnseignantRepository EnseignantRepository;
     EnseignatMapper enseignatMapper;
     GradeRepository gradeRepository;
-
-=======
-    EnseignantRepository EnseignantRepository;
-    EnseignatMapper enseignatMapper;
->>>>>>> 04a9a2ff7180845565d5734b4e64bbd0e402c780
     @Override
     public EnseignantResponseDTO saveEnseignant(AddEnseignantDTO addEnseignantDTO) {
         Departement departement = departementRepository.findById(addEnseignantDTO.departmentId())
