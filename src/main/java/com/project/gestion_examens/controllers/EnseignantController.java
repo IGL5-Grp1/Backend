@@ -1,5 +1,6 @@
 package com.project.gestion_examens.controllers;
 
+import com.project.gestion_examens.dto.response.EnseignantResponseDTO;
 import com.project.gestion_examens.entities.Enseignant;
 import com.project.gestion_examens.services.impl.EnseignantService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -25,7 +26,7 @@ public class EnseignantController {
         return EnseignantService.saveEnseignant(Enseignant);
     }
     @GetMapping("findAll")
-    public List<Enseignant> findAllEnseignants() {
+    public List<EnseignantResponseDTO> findAllEnseignants() {
         return EnseignantService.findAll();
     }
 

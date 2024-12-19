@@ -30,13 +30,11 @@ public class Enseignant {
     private String email;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
     @ToString.Exclude
     @JoinColumn(name = "id_departement")
     private Departement departement;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
     @ToString.Exclude
     @JoinColumn(name = "id_grade")
     private Grade grade;
