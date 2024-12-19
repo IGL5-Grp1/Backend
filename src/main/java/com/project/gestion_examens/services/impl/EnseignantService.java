@@ -14,8 +14,8 @@ public class EnseignantService implements IEnseignantService {
     EnseignantRepository EnseignantRepository;
 
     @Override
-    public Enseignant saveEnseignant(Enseignant Enseignant) {
-        return EnseignantRepository.save(Enseignant);
+    public Enseignant saveEnseignant(Enseignant enseignant) {
+        return EnseignantRepository.save(enseignant);
     }
 
     @Override

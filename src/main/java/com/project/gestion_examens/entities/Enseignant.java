@@ -1,8 +1,11 @@
 package com.project.gestion_examens.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import jakarta.persistence.*;
+
+import java.util.Date;
 
 @Entity
 @Data
@@ -15,15 +18,27 @@ public class Enseignant {
     @Column(name = "enseignant_id")
     private Long id;
     @Basic
-    @Column(name = "username",nullable = false,length = 45)
+    @Column(nullable = false)
     private String username;
 
     @Basic
-    @Column(name = "cin",nullable = false,length = 45)
+    @Column(nullable = false)
     private String cin;
 
     @Basic
-    @Column(name = "email",nullable = false,length = 45)
+    @Column(nullable = false)
     private String email;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ToString.Exclude
+    @JoinColumn(name = "id_departement")
+    private Departement departement;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ToString.Exclude
+    @JoinColumn(name = "id_grade")
+    private Grade grade;
 
 }

@@ -28,5 +28,5 @@ public class Grade {
     @OneToMany(mappedBy = "grade", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ToString.Exclude  // Évite les boucles infinies lors du toString()
     @EqualsAndHashCode.Exclude  // Évite les problèmes lors de l'utilisation dans des collections
-    private List<HistorisationProf> historisationsProf;
+    private List<Enseignant> enseignants;
 }
