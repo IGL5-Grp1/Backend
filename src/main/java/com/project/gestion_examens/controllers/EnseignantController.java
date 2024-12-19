@@ -1,5 +1,6 @@
 package com.project.gestion_examens.controllers;
 
+import com.project.gestion_examens.dto.request.AddEnseignantDTO;
 import com.project.gestion_examens.dto.response.EnseignantResponseDTO;
 import com.project.gestion_examens.entities.Enseignant;
 import com.project.gestion_examens.services.impl.EnseignantService;
@@ -22,8 +23,8 @@ public class EnseignantController {
     EnseignantService EnseignantService;
 
     @PostMapping("add")
-    public Enseignant addEnseignant(@RequestBody Enseignant Enseignant) {
-        return EnseignantService.saveEnseignant(Enseignant);
+    public EnseignantResponseDTO addEnseignant(@RequestBody AddEnseignantDTO addEnseignantDTO) {
+        return EnseignantService.saveEnseignant(addEnseignantDTO);
     }
     @GetMapping("findAll")
     public List<EnseignantResponseDTO> findAllEnseignants() {

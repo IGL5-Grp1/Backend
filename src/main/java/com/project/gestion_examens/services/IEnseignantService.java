@@ -1,12 +1,13 @@
 package com.project.gestion_examens.services;
 
+import com.project.gestion_examens.dto.request.AddEnseignantDTO;
 import com.project.gestion_examens.dto.response.EnseignantResponseDTO;
 import com.project.gestion_examens.entities.Enseignant;
 
 import java.util.List;
 
 public interface IEnseignantService {
-    Enseignant saveEnseignant(Enseignant Enseignant);
+    EnseignantResponseDTO saveEnseignant(AddEnseignantDTO addEnseignantDTO);
     List<EnseignantResponseDTO> findAll();
     Enseignant findById(Long id);
     void deleteById(Long id);
