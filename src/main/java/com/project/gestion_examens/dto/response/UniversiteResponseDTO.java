@@ -1,4 +1,7 @@
 package com.project.gestion_examens.dto.response;
 
-public record UniversiteResponseDTO() {
+import lombok.Builder;
+
+@Builder
+public record UniversiteResponseDTO(Long id, String nomUniversite, String region) {
 }
