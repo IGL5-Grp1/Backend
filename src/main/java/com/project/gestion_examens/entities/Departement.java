@@ -26,7 +26,7 @@ public class Departement {
     @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ToString.Exclude  // Évite les boucles infinies lors du toString()
     @EqualsAndHashCode.Exclude  // Évite les problèmes lors de l'utilisation dans des collections
-    private List<HistorisationProf> historisationsProf;
+    private List<Enseignant> enseignants;
     @OneToMany(mappedBy = "departement", fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
