@@ -1,9 +1,6 @@
 package com.project.gestion_examens.services.impl;
 import com.project.gestion_examens.dto.request.AddEnseignantDTO;
-<<<<<<< Updated upstream
-=======
 import com.project.gestion_examens.dto.response.CSVUploadResponseDTO;
->>>>>>> Stashed changes
 import com.project.gestion_examens.dto.response.EnseignantResponseDTO;
 import com.project.gestion_examens.entities.Departement;
 import com.project.gestion_examens.entities.Enseignant;
@@ -54,8 +51,6 @@ public class EnseignantService implements IEnseignantService {
         enseignant.setGrade(grade);
 
         return enseignatMapper.toEnseignantResponseDTO(EnseignantRepository.save(enseignant));
-<<<<<<< Updated upstream
-=======
     }
     public CSVUploadResponseDTO processCSVFile(MultipartFile file) {
         List<String> errors = new ArrayList<>();
@@ -110,7 +105,6 @@ public class EnseignantService implements IEnseignantService {
                 .departmentId(departmentId)
                 .gradeId(gradeId)
                 .build());
->>>>>>> Stashed changes
     }
 
     @Override
