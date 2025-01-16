@@ -5,6 +5,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class SalleDTO {
     private Long id;
     private String noSalle;
