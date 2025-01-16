@@ -15,4 +15,6 @@ public interface EnseignantRepository extends JpaRepository<Enseignant, Long> {
     List<Enseignant> findByUsername(String username);
 
     List<Enseignant> findByEmail(String email);
+
+    List<Enseignant> findByDepartementId(Long departmentId);
 }
