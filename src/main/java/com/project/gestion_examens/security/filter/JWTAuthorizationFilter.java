@@ -20,7 +20,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Objects;
 
 public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
@@ -37,7 +37,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
             @NotNull HttpServletResponse response,
             @NotNull FilterChain filterChain) throws ServletException, IOException {
         String accessToken = jwtHelper.extractTokenFromHeaderIfExists(request.getHeader(JWTUtil.AUTH_HEADER));
-        if (accessToken != null && !List.of("/api/v1/users/refresh-token", "/api/v1/noauth/refresh-token").contains(request.getServletPath())) {
+        if (accessToken != null && !Objects.equals("/auth/refresh-token", request.getServletPath())) {
             Algorithm algorithm = Algorithm.HMAC256(JWTUtil.SECRET);
             JWTVerifier jwtVerifier = JWT.require(algorithm).build();
             DecodedJWT decodedJWT = jwtVerifier.verify(accessToken);

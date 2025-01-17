@@ -6,6 +6,7 @@ import com.project.gestion_examens.repositories.RoleRepository;
 import com.project.gestion_examens.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -55,8 +56,14 @@ public class Initializer implements ApplicationRunner {
                 .build());
     }
 
+    @Value("${spring.jpa.hibernate.ddl-auto}")
+    private String ddlAuto;
+
     @Override
     public void run(ApplicationArguments args) {
+        if (!ddlAuto.equals("create")) {
+            return;
+        }
         createRoles();
         createSuperAdminUser();
     }
